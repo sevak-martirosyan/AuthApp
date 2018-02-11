@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AuthApp</string>
+
+    <integer name="com_vk_sdk_AppId">6368316</integer>
+
+    <string name="facebook_app_id">404344780011296</string>
+    <string name="fb_login_protocol_scheme">fb404344780011296</string>
+</resources>
