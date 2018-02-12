@@ -10,15 +10,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.FacebookSdk;
 import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
@@ -95,7 +92,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         if (!VKSdk.onActivityResult(requestCode, resultCode, data, new VKCallback<VKAccessToken>() {
             @Override
             public void onResult(VKAccessToken res) {
-                statusTextView.setText(res.userId + " is connected!");
+                String s = res.userId + " is connected!";
+                statusTextView.setText(s);
                 Toast.makeText(getApplicationContext(), "Good job!", Toast.LENGTH_LONG).show();
             }
 
@@ -113,16 +111,19 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private void handleSignInResult(GoogleSignInResult result) {
         Log.d(TAG, " handleSignInResult:" + result.isSuccess());
 
+        GoogleSignInAccount acct = result.getSignInAccount();
+        String s = acct.getDisplayName() + " is connected!";
+
         if (result.isSuccess()) {
-            GoogleSignInAccount acct = result.getSignInAccount();
-            statusTextView.setText(acct.getDisplayName() + " is connected!");
+            statusTextView.setText(s);
         } else {
             Toast.makeText(getApplicationContext(), "Error!", Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
         Log.d(TAG, "onConnectionFiled" + connectionResult);
 
 
@@ -132,7 +133,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
             @Override
             public void onResult(@NonNull Status status) {
-                statusTextView.setText("Signed out");
+                String s = "Signed out";
+                statusTextView.setText(s);
             }
         });
     }

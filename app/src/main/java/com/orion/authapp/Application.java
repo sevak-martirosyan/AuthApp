@@ -1,7 +1,6 @@
 package com.orion.authapp;
 
 import android.content.Intent;
-
 import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKAccessTokenTracker;
 import com.vk.sdk.VKSdk;
