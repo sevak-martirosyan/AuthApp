@@ -3,6 +3,7 @@ package com.orion.authapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.vk.sdk.VKAccessToken;
@@ -22,8 +23,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+    }
 
-        VKSdk.login(this, scope);
+    public void onClickGoogle(View view){
+
+    }
+
+    public void onClickFacebook(View view){
+
+    }
+
+    public void onClickVk(View view){
+
+        VKSdk.login(this,scope);
+
     }
 
     @Override
@@ -45,4 +58,6 @@ public class MainActivity extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+
 }
