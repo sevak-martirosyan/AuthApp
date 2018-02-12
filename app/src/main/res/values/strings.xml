@@ -4,7 +4,7 @@
     <string name="facebook_app_id">404344780011296</string>
     <string name="fb_login_protocol_scheme">fb404344780011296</string>
 
-    <string name="google">google</string>
+    <string name="out">Sign out</string>
     <string name="facebook">facebook</string>
     <string name="vk">vk</string>
 </resources>

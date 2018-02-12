@@ -4,39 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="16dp"
-    android:paddingTop="16dp"
-    android:paddingRight="16dp"
     android:paddingLeft="16dp"
-    android:orientation="horizontal"
-    android:gravity="bottom"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
     tools:context=".MainActivity">
 
-    <Button style="?android:attr/buttonBarButtonStyle"
+
+    <TextView
+        android:id="@+id/status_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="100dp" />
+
+    <com.google.android.gms.common.SignInButton
         android:id="@+id/gl_sign_in_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginStart="10dp"
-        android:onClick="onClickGoogle"
-        android:text="@string/google" />
+        android:onClick="onClick" />
 
-    <Button style="?android:attr/buttonBarButtonStyle"
+
+    <Button
         android:id="@+id/fb_sign_in_button"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_marginStart="20dp"
         android:onClick="onClickFacebook"
         android:text="@string/facebook" />
 
-    <Button style="?android:attr/buttonBarButtonStyle"
+    <Button
         android:id="@+id/vk_sign_in_button"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_marginStart="35dp"
         android:onClick="onClickVk"
         android:text="@string/vk" />
 
+    <Button
+        android:id="@+id/gl_sign_out_button"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="@string/out" />
 
 </LinearLayout>
 
