@@ -27,14 +27,12 @@
         android:onClick="onClick" />
 
 
-    <Button
+    <com.facebook.login.widget.LoginButton
         android:id="@+id/fb_sign_in_button"
-        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:onClick="onClickFacebook"
-        android:text="@string/facebook" />
+        android:layout_marginStart="10dp"
+        android:onClick="onClickFacebook"/>
 
     <Button
         android:id="@+id/vk_sign_in_button"

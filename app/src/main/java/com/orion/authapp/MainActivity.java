@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -33,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     GoogleApiClient mGoogleApiClient;
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
+    private CallbackManager mCallbackManager;
+    private static final String TAG1 = "FacebookLogin";
 
 
     private String[] scope = new String[]{VKScope.MESSAGES, VKScope.FRIENDS, VKScope.WALL};
@@ -59,6 +66,31 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         signOutButton = findViewById(R.id.gl_sign_out_button);
         signOutButton.setOnClickListener(this);
 
+        // Initialize Facebook Login button
+        mCallbackManager = CallbackManager.Factory.create();
+        LoginButton loginButton = findViewById(R.id.fb_sign_in_button);
+        loginButton.setReadPermissions("email", "public_profile");
+        loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.d(TAG1, "facebook:onSuccess:" + loginResult);
+                //handleFacebookAccessToken(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+                Log.d(TAG1, "facebook:onCancel");
+                // ...
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Log.d(TAG1, "facebook:onError", error);
+                // ...
+            }
+        });
+
+// ...
 
     }
 
@@ -106,6 +138,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         })) {
             super.onActivityResult(requestCode, resultCode, data);
         }
+
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
