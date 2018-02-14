@@ -1,4 +1,4 @@
-package com.orion.authapp;
+package com.orion.authapp.presentation;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -24,13 +24,14 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.orion.authapp.R;
 import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKCallback;
 import com.vk.sdk.VKScope;
 import com.vk.sdk.VKSdk;
 import com.vk.sdk.api.VKError;
 
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
+public class AuthActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     SignInButton signInButton;
     Button signOutButton;
@@ -66,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         signOutButton = findViewById(R.id.gl_sign_out_button);
         signOutButton.setOnClickListener(this);
 
-        // Initialize Facebook Login button
         mCallbackManager = CallbackManager.Factory.create();
         LoginButton loginButton = findViewById(R.id.fb_sign_in_button);
         loginButton.setReadPermissions("email", "public_profile");
@@ -74,23 +74,23 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG1, "facebook:onSuccess:" + loginResult);
-                //handleFacebookAccessToken(loginResult.getAccessToken());
             }
 
             @Override
             public void onCancel() {
                 Log.d(TAG1, "facebook:onCancel");
-                // ...
+
             }
 
             @Override
             public void onError(FacebookException error) {
                 Log.d(TAG1, "facebook:onError", error);
-                // ...
+
             }
+
         });
 
-// ...
+
 
     }
 
