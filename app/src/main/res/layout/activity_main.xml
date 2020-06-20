@@ -9,7 +9,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    tools:context=".presentation.AuthActivity">
+    tools:context=".MainActivity">
 
 
     <TextView
